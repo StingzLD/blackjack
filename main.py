@@ -82,20 +82,17 @@ while playing:
     player_score = calculate_score(player_hand)
     dealer_score = calculate_score(dealer_hand)
 
-    # Check for hand(s) with Blackjack
-    if player_score == 0 and dealer_score == 0:
+    # Game logic if a hand has Blackjack
+    if player_score == 0 or dealer_score == 0:
         show_blackjack()
-        print("\n    Blackjack! It's a draw!\n")
-        playing = play_again()
-        continue
-    elif player_score == 0:
-        show_blackjack()
-        print("\n    Blackjack! You win!\n")
-        playing = play_again()
-        continue
-    elif dealer_score == 0:
-        show_blackjack()
-        print("\n    Blackjack! Dealer wins!\n")
+        # Determine winner
+        if player_score == 0 and dealer_score == 0:
+            print("\n    Blackjack! It's a draw!\n")
+        elif player_score == 0:
+            print("\n    Blackjack! You win!\n")
+        elif dealer_score == 0:
+            print("\n    Blackjack! Dealer wins!\n")
+        # Ask if the player wants to play again
         playing = play_again()
         continue
 
